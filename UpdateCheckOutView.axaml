@@ -1,0 +1,58 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Ksiegarnia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:UpdateCheckoutViewModel"
+             x:Class="Ksiegarnia.Views.UpdateCheckoutView"
+             Background="#F5F5F5" Foreground="#3F51B5">
+
+	<Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" Text="Update Checkout" Foreground="#3F51B5" />
+
+		<Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Book:" Foreground="#3F51B5" />
+		<ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="10" ItemsSource="{Binding Books}" SelectedValue="{Binding CheckoutBook}" VerticalAlignment="Center" Background="#FFFFFF" Foreground="#3F51B5">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Title}" Foreground="#3F51B5" />
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Last Name:" Foreground="#3F51B5" />
+		<TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="10" Text="{Binding CheckoutLastName}" VerticalAlignment="Center" Background="#FFFFFF" Foreground="#3F51B5" />
+
+		<Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Phone:" Foreground="#3F51B5" />
+		<TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="10" Text="{Binding CheckoutPhone}" VerticalAlignment="Center" Background="#FFFFFF" Foreground="#3F51B5" />
+
+		<Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="From:" Foreground="#3F51B5" />
+		<DatePicker Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Margin="10" SelectedDate="{Binding CheckoutFrom}" VerticalAlignment="Center" Background="#FFFFFF" BorderBrush="#BDBDBD" BorderThickness="1"/>
+
+		<Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="To:" Foreground="#3F51B5" />
+		<DatePicker Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Margin="10" SelectedDate="{Binding CheckoutTo}" VerticalAlignment="Center" Background="#FFFFFF" BorderBrush="#BDBDBD" BorderThickness="1"/>
+
+		<StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+			<Button Margin="10" Padding="10" Content="Save" Width="100" Background="#4CAF50" Foreground="White" Command="{Binding UpdateCommand}" HorizontalContentAlignment="Center" />
+			<Button Margin="10" Padding="10" Content="Back" Width="100" Background="#FF4081" Foreground="White" Command="{Binding BackCommand}" HorizontalContentAlignment="Center" />
+		</StackPanel>
+	</Grid>
+</UserControl>

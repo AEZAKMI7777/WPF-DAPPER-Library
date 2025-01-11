@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Ksiegarnia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:CategoryViewModel"
+             x:Class="Ksiegarnia.Views.CategoryView">
+	<Grid Background="#F5F5F5">
+		<!-- Jasne tło dla Grid -->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Grid.Row="0" Grid.Column="1" Text="Category" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="#3F51B5" Margin="10"/>
+
+		<ListBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Category}" SelectedItem="{Binding SCategory}" MaxHeight="400" Background="#FFFFFF" BorderBrush="#BDBDBD" BorderThickness="1" Margin="10">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Margin="5">
+						<TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="#3F51B5"/>
+						<TextBlock Text="{Binding CreatedDate, StringFormat='Created: {0:dd/MM/yyyy}'}" Foreground="#757575"/>
+						<TextBlock Text="{Binding ModifiedDate, StringFormat='Modified: {0:dd/MM/yyyy}'}" Foreground="#757575"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+			<Button Content="Create" Command="{Binding CreateCommand}" Background="#4CAF50" Foreground="White" Margin="5"/>
+			<Button Content="Update" Command="{Binding UpdateCommand}" Background="#FFEB3B" Foreground="#212121" Margin="5"/>
+			<Button Content="Remove" Command="{Binding RemoveCommand}" Background="#F44336" Foreground="White" Margin="5"/>
+		</StackPanel>
+
+		<Button Grid.Row="0" Grid.Column="0" Content="Back" Command="{Binding BackCommand}" HorizontalAlignment="Left" Margin="10" Foreground="#3F51B5"/>
+	</Grid>
+</UserControl>

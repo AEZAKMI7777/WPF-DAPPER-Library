@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Ksiegarnia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:BooksViewModel"
+             x:Class="Ksiegarnia.Views.BooksView">
+	<Grid Background="#F5F5F5">
+		<!-- Jasne tło dla Grid -->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto"/>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="Auto"/>
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Books" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Margin="10" Foreground="#3F51B5"/>
+
+		<ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}" MaxHeight="400" Background="#FFFFFF" BorderBrush="#BDBDBD" BorderThickness="1" Margin="10">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Margin="5">
+						<TextBlock Text="{Binding Title}" FontWeight="Bold" Foreground="#3F51B5"/>
+						<TextBlock Text="{Binding Author}" Foreground="#757575"/>
+						<TextBlock Text="{Binding Category.Name}" Foreground="#757575"/>
+						<TextBlock Text="{Binding CreatedDate, StringFormat='Created: {0:dd/MM/yyyy}'}" Foreground="#757575"/>
+						<TextBlock Text="{Binding ModifiedDate, StringFormat='Modified: {0:dd/MM/yyyy}'}" Foreground="#757575"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+
+		<ComboBox Grid.Row="0" Grid.Column="2" Margin="10,10" ItemsSource="{Binding Category}" SelectedValue="{Binding SCategory}" VerticalAlignment="Center">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Name}" Foreground="#3F51B5"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+			<Button Content="Create" Command="{Binding CreateBookCommand}" Background="#4CAF50" Foreground="White" Margin="5"/>
+			<Button Content="Update" Command="{Binding UpdateBookCommand}" Background="#FFEB3B" Foreground="#212121" Margin="5"/>
+			<Button Content="Remove" Command="{Binding RemoveBookCommand}" Background="#F44336" Foreground="White" Margin="5"/>
+			<Button Content="Categories" Command="{Binding ShowCategoryCommand}" Background="#00BCD4" Foreground="White" Margin="5"/>
+			<Button Content="Checkouts" Command="{Binding ShowCheckoutsCommand}" Background="#009688" Foreground="White" Margin="5"/>
+		</StackPanel>
+	</Grid>
+</UserControl>

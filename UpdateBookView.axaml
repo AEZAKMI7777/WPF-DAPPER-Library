@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Ksiegarnia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:UpdateBookViewModel"
+             x:Class="Ksiegarnia.Views.UpdateBookView" Background="#F5F5F5" Foreground="#3F51B5">
+	<Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+
+		<TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" Text="Update New Book" Foreground="#3F51B5" />
+
+		<Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Category:" HorizontalAlignment="Right" Foreground="#3F51B5" />
+		<ComboBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10" ItemsSource="{Binding CategoryList}" SelectedValue="{Binding BookCategory}" VerticalAlignment="Center" Background="#FFFFFF" Foreground="#3F51B5">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Name}" Foreground="#3F51B5" />
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Title:" HorizontalAlignment="Right" Foreground="#3F51B5" />
+		<TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10" Text="{Binding BookTitle}" Background="#FFFFFF" Foreground="#3F51B5" />
+
+		<Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Content="Author:" HorizontalAlignment="Right" Foreground="#3F51B5" />
+		<TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10" Text="{Binding BookAuthor}" Background="#FFFFFF" Foreground="#3F51B5" />
+
+		<Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="10" Content="Update Book" Width="120" Padding="10" Background="#4CAF50" Foreground="White" Command="{Binding UpdateBookCommand}" HorizontalContentAlignment="Center" />
+		<Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="10" Content="Back" Width="100" Padding="10" Background="#FF4081" Foreground="White" Command="{Binding BackCommand}" HorizontalContentAlignment="Center" />
+	</Grid>
+</UserControl>
