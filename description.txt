@@ -1,0 +1,24 @@
+AppDbContext.cs
+Ten plik definiuje klasę AppDbContext, która dziedziczy z klasy DbContext dostarczanej przez Entity Framework. Klasa ta reprezentuje kontekst bazy danych dla aplikacji i zawiera:
+
+Konstruktor – Przyjmuje łańcuch połączenia do bazy danych i ustawia inicjalizator bazy danych jako CreateDatabaseIfNotExists<AppDbContext>. Oznacza to, że baza danych zostanie automatycznie utworzona, jeśli nie istnieje.
+DbSety – Reprezentują kolekcje obiektów w bazie danych:
+Users – tabela użytkowników.
+Books – tabela książek.
+Category – tabela kategorii książek.
+Checkouts – tabela wypożyczeń.
+Metoda SaveChangesAsync – Asynchroniczna metoda zapisu zmian do bazy danych.
+Klasa AppDbContext służy jako główny punkt dostępu do bazy danych w aplikacji, umożliwiając operacje CRUD (Create, Read, Update, Delete) na tabelach.
+
+IAppDbContext.cs
+Ten plik definiuje interfejs IAppDbContext, który opisuje kontrakt dla kontekstu bazy danych. Interfejs zawiera:
+
+Właściwości DbSet – Reprezentują kolekcje w bazie danych:
+Users – tabela użytkowników.
+Books – tabela książek.
+Category – tabela kategorii książek.
+Checkouts – tabela wypożyczeń.
+Metoda SaveChangesAsync – Asynchroniczna metoda zapisu zmian do bazy danych.
+Interfejs IAppDbContext służy do ułatwienia testowania aplikacji poprzez umożliwienie tworzenia mocków kontekstu bazy danych i uniezależnienia kodu od konkretnej implementacji Entity Framework.
+
+Podsumowując, pliki te definiują architekturę dostępu do danych w aplikacji, gdzie AppDbContext jest implementacją rzeczywistego kontekstu bazy danych, a IAppDbContext pozwala na elastyczne zarządzanie i testowanie.
